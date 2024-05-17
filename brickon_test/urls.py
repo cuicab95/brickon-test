@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/doc/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('security/', include('brickon_test.apps.security.urls')),
+    path('store/', include('brickon_test.apps.store.urls')),
 ]

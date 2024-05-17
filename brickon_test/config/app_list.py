@@ -8,6 +8,7 @@ DJANGO_APPS = [
 ]
 MY_APPS = [
     'brickon_test.apps.security',
+    'brickon_test.apps.store',
 ]
 EXTERNAL_APPS = [
     'rest_framework',
