@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    db:
+        image: postgres:latest
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=brickon_test
+        ports:
+            - "5432:5432"
+    web:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        environment:
+            - DJANGO_CONFIGURATION=Dev
+            - DJANGO_SETTINGS_MODULE=brickon_test.settings
+            - DATABASE_URL=postgres://postgres:postgres@db:5432/brickon_test
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/app
+        ports:
+        - "8000:8000"
+        depends_on:
+            - db
+
